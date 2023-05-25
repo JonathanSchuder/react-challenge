@@ -3,6 +3,7 @@ import { Container, Row } from 'react-bootstrap'
 import Note from '../components/Note'
 import NoteCreator from '../components/NoteCreator'
 import NotesContext from '../context/NotesContext'
+import { motion, useAnimation } from 'framer-motion'
 
 export default function App() {
 
@@ -12,11 +13,6 @@ export default function App() {
         { content: 'Note 3', id: 3 },
         { content: 'Note 4', id: 4 },
     ])
-
-    useEffect(() => {
-
-    }, [])
-
 
 
     return (
@@ -35,7 +31,8 @@ export default function App() {
                             notes.map(note => (
                                 <div id='note-container' key={note.id}>
                                     <div className='d-flex align-items-center' >
-                                        <Note content={note.content} />
+                                        <Note content={note.content} id={note.id} />
+
                                         <NoteCreator note={note.id} />
                                     </div>
 
@@ -47,6 +44,8 @@ export default function App() {
                         }
 
                     </div>
+
+
 
                 </Container>
 
